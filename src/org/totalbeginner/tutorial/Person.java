@@ -11,5 +11,21 @@ public class Person {
 		maximumBooks = 3;	
 	}
 	
+	//methods
+	public String getName() {
+		return this.name;
+	}
 	
+	public void setName (String name) {
+		this.name = name;
+	}
+
+	public int getMaximumBooks() {
+		return maximumBooks;
+	}
+
+	public void setMaximumBooks(int maximumBooks) {
+		this.maximumBooks = maximumBooks;
+	}
+
 }
