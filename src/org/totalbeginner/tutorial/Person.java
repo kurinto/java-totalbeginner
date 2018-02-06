@@ -2,22 +2,22 @@ package org.totalbeginner.tutorial;
 
 public class Person {
 	// fields
-	private String name;	// name of the person
-	private int maximumBooks;	// most books the person can check out
+	private String name; 		// name of the person
+	private int	maximumBooks;  	// most books the person can check out
 	
-	// constructor
+	// constructors
 	public Person() {
 		name = "unknown name";
-		maximumBooks = 3;	
+		maximumBooks = 3;
 	}
 	
-	//methods
+	// methods
 	public String getName() {
-		return this.name;
+		return name;
 	}
 	
-	public void setName (String name) {
-		this.name = name;
+	public void setName(String anyName) {
+		name = anyName;	
 	}
 
 	public int getMaximumBooks() {
@@ -27,5 +27,7 @@ public class Person {
 	public void setMaximumBooks(int maximumBooks) {
 		this.maximumBooks = maximumBooks;
 	}
-
+	
+	
+	
 }
