@@ -44,5 +44,23 @@ public class MyLibrary {
 		this.people.remove(p1);
 	}
 
+	public boolean checkOut(Book b1, Person p1) {
+		if (b1.getPerson() == null) {
+			b1.setPerson(p1);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean checkIn(Book b1) {
+		if (b1.getPerson() != null) {
+			b1.setPerson(null);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	
 }
