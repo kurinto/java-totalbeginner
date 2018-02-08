@@ -1,7 +1,6 @@
 package org.totalbeginner.tutorial;
 
 import java.util.ArrayList;
-
 import junit.framework.TestCase;
 
 public class MyLibraryTest extends TestCase {
@@ -20,8 +19,6 @@ public class MyLibraryTest extends TestCase {
 		
 		assertTrue(ml.books instanceof ArrayList);
 		assertTrue(ml.people instanceof ArrayList);
-		
-		
 	}
 
 	//setup
@@ -36,8 +33,6 @@ public class MyLibraryTest extends TestCase {
 		p2.setName("Sue");
 		
 		ml = new MyLibrary("Test");
-		
-		
 	}
 	
 	public void testAddBook() {
@@ -83,14 +78,10 @@ public class MyLibraryTest extends TestCase {
 
 	}
 	
-	public void testChekOut() {
+	public void testCheckOut() {
 		//setup objects
 		setup();
-		
-		ml.addBook(b1);
-		ml.addBook(b2);
-		ml.addPerson(p1);
-		ml.addPerson(p1);
+		addItems();
 		
 		assertTrue("Book did not checkout correctly", 
 				ml.checkOut(b1,p1));
@@ -104,6 +95,42 @@ public class MyLibraryTest extends TestCase {
 		assertFalse("Book was already checked in", ml.checkIn(b1));
 				
 		assertFalse("Book was never checked out", ml.checkIn(b2));
+
+		//additional test for maximumBooks
+
+		//setup objects
+		setup();
+		p1.setMaximumBooks(1);
+		addItems();
+		
+		assertTrue("First Book did not check out", 
+				ml.checkOut(b2, p1));
+		assertFalse("Second book should not have checked out", 
+				ml.checkOut(b1,p1));
+	}
+
+	private void addItems() {
+		ml.addBook(b1);
+		ml.addBook(b2);
+		ml.addPerson(p1);
+		ml.addPerson(p1);
+	}
+
+	public void testGetBooksForPerson() {
+		setup();
+		addItems();
+		assertEquals(0, ml.getBooksForPerson(p1).size());
+		
+		ml.checkOut(b1, p1);
+		ArrayList<Book> testBooks = ml.getBooksForPerson(p1);
+		assertEquals(1, testBooks.size());
+		assertEquals(0, testBooks.indexOf(b1));
+		
+		ml.checkOut(b2, p1);
+		testBooks = ml.getBooksForPerson(p1);
+		assertEquals(2, testBooks.size());
+		assertEquals(1, testBooks.indexOf(b1));
+		
 		
 	}
 	
