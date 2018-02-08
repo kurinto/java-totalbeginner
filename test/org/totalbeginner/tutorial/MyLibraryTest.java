@@ -129,8 +129,7 @@ public class MyLibraryTest extends TestCase {
 		ml.checkOut(b2, p1);
 		testBooks = ml.getBooksForPerson(p1);
 		assertEquals(2, testBooks.size());
-		assertEquals(1, testBooks.indexOf(b1));
-		
+		assertEquals(1, testBooks.indexOf(b2));
 		
 	}
 	
