@@ -77,6 +77,34 @@ public class MyLibrary {
 		return result;
 	}
 
-	
+	public ArrayList<Book> getAvailableBooks() {
+		ArrayList<Book> result = new ArrayList<Book>();
+		
+		for (Book aBook : this.getBooks()) {
+			if (aBook.getPerson() == null) {
+				result.add(aBook);
+			}
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Book> getUnavailableBooks() {
+		ArrayList<Book> result = new ArrayList<Book>();
+		
+		for (Book aBook : this.getBooks()) {
+			if (aBook.getPerson() != null) {
+				result.add(aBook);
+			}
+		}
+		
+		return result;
+	}
+
+	public String toString() {
+		return this.getName() + ": " +
+				this.getBooks().size() + " books; " +
+				this.getPeople().size() + " people.";
+	}
 	
 }
